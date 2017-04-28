@@ -1,0 +1,50 @@
+/** Webcpp v0.7.0+ compatible StyleSheet http://webcpp.sf.net **/
+/** Theme: typical **/
+
+body
+{
+background-color: #ffffff
+}
+
+a:link    {color:#ff0000}
+a:visited {color:#666666}
+a:active  {color:#0000ff}
+a:hover   {color:#00b800}
+
+pre
+{
+color: #000000
+}
+
+font
+{
+font-size:100%
+}
+
+font.preproc
+{
+color: #00b800
+}
+
+font.numbers
+{
+color: #a900a9
+}
+
+font.strings
+{
+color: #ff0000
+}
+
+font.keyword
+{
+color: #0000ff;
+font-weight: bold
+}
+
+font.comment
+{
+color: #666666;
+font-style: italic
+}
+

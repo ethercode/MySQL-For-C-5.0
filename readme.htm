@@ -1,0 +1,568 @@
+<!DOCTYPE html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>CMySQL: An easy to use C++ implementation of MySQL - Readme</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<style type="text/css">
+	a:link {
+	text-decoration: none;
+	color: #BFFFFF;
+	}
+	a:visited {
+	text-decoration: none;
+	color: #BFFFFF;
+	}
+	a:hover {
+	text-decoration: none;
+	color: #0080C0;
+	}
+	a:active {
+	text-decoration: none;
+	color: #BFFFFF;
+	}
+	body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #FFFFFF;
+	background-color: #000000;
+	}
+	.MainHeading {
+	font-size: medium;
+	color: #E1FFFF;
+	font-weight: bold;
+	}
+	.SubHeading {
+	color: #BFEFFF;
+	font-weight: bold;
+	}
+	li {
+	text-align: justify;
+	}
+	p {
+	text-align: justify;
+	}
+
+	pre
+	{
+	font-family: "Lucida Console", Courier, mono;
+	font-size: 12px;
+	line-height:14px;
+	}
+	
+	font
+	{
+	font-size:100%
+	}
+	
+	font.preproc
+	{
+	color: #8080FF
+	font-weight: bold
+	}
+	
+	font.numbers
+	{
+	color: #80FF80
+	}
+	
+	font.strings
+	{
+	color: #80FF80
+	}
+	
+	font.keyword
+	{
+	color: #00C0FF;
+	font-weight: bold
+	}
+	
+	font.comment
+	{
+	color: #c0c0c0;
+	font-style: italic
+	}
+
+
+	</style>
+</head>
+
+<body>
+<p class="MainHeading"><u>CMySQL: An easy to use C++ implementation of MySQL - Readme</u></p>
+<p class="SubHeading" align="right">Version 1.0<br>August 17 2004</p>
+<p class="SubHeading">Author: Tamburlaine Murray&nbsp;(<a href="mailto:tmurray@webmail.co.za">tmurray@webmail.co.za</a>)</p>
+<p class="MainHeading">Index</p>
+<pre>
+<font face="Verdana, Arial, Helvetica, sans-serif">
+<a href="#sect_1">1. Introduction</a>
+
+<a href="#sect_2">2. Features</a>
+
+<a href="#sect_3">3. Installation instructions</a>
+	<a href="#sect_3_1">3.1. Microsoft Visual Studio 6</a>
+	<a href="#sect_3_2">3.2. Borland C++ Builder 6</a>
+	<a href="#sect_3_3">3.3. gcc</a>
+
+<a href="#sect_4">4. How to use this package</a>
+	<a href="#sect_4_1">4.1. Tutorial</a>
+	<a href="#sect_4_2">4.2. Reference</a>
+		<a href="#sect_4_2_1">4.2.1 The CMySQL class</a>
+			<a href="#sect_4_2_1_1">4.2.1.1 Connect ()</a>
+			<a href="#sect_4_2_1_2">4.2.1.2 Disconnect ()</a>
+			<a href="#sect_4_2_1_3">4.2.1.3 Query ()</a>
+			<a href="#sect_4_2_1_4">4.2.1.4 FreeResult ()</a>
+			<a href="#sect_4_2_1_5">4.2.1.4 IsConnected ()</a>
+			<a href="#sect_4_2_1_6">4.2.1.4 FreeAllResults ()</a>
+		<a href="#sect_4_2_2">4.2.2 The CMySQLResult class</a>
+			<a href="#sect_4_2_2_1">4.2.2.1 GetResult_Exists ()</a>
+			<a href="#sect_4_2_2_2">4.2.2.2 GetResult_Rows ()</a>
+			<a href="#sect_4_2_2_3">4.2.2.3 GetResult_Fields ()</a>
+			<a href="#sect_4_2_2_4">4.2.2.4 GetResult_FieldName ()</a>
+			<a href="#sect_4_2_2_5">4.2.2.5 GetResult_Text ()</a>
+</font>
+</pre>
+&nbsp;<br>
+<a name="sect_1"></a>
+<p class="MainHeading">1. Introduction</p>
+<p>
+CMySQL is a project aimed at making it dead easy to use MySQL in a C++ project. 
+After scouring the Internet for a useable C++ implementation without success (although 
+MySQL++ is making great progress) I decided to make my own one that is 
+incredibly simple.
+</p>
+<p>
+The problem I had with MySQL++ was that it wasnt multiple-query proof (i.e. you 
+couldnt do any queries until the result from the previous query had been freed.) 
+The only way around this was to buffer the entire result. This led me to develop 
+this library. This is not a library as such. This is a class, with source, which 
+you compile along with your other source files.
+</p>
+<p>
+There are two classes; CMySQL (the main connection abstraction) and the 
+CMySQLResult class. You can get more information on these in section 4 where I 
+describe how to use this package.<br>
+&nbsp;<br>
+</p>
+
+<a name="sect_2"></a>
+<p class="MainHeading">2. Features</p>
+<ul>
+	</p>
+	<li>
+		<b>Absolutely dead-easy to use. </b>All you need to do is add it to your project, 
+		link with the libraries provided and away you go! There are no masses of 
+		functions with long parameter lists. A simple Connect() function and Query() 
+		function make it very easy to use.<br>
+		&nbsp;<br>
+	</li>
+	<li>
+		<b>Borland C++ Bulder 6 compatibility. </b>Sadly, there are very few things that 
+		work on Borland C++ Builder these days, more so in the case of open source 
+		software. C++ Builder 6 is very useful and well-made. This libray is compatible 
+		with the VCL AnsiString that Borland C++ uses. When set up properly, the 
+		internal CMySQL implementation uses AnsiStrings, which vastly improves 
+		performance.<br>
+		&nbsp;<br>
+	</li>
+	<li>
+		<b>It's FREE! </b>I am not asking a single cent for this. You can use the class 
+		in your own program, be it open-source or in a corporate environment. The only 
+		thing I require for corporate use is notification of use. Just drop me an e-mail 
+		to tell me that you are going to use the library. That is my only term of use.<br>
+		&nbsp;<br>
+		&nbsp;<br>
+	</li>
+</ul>
+<a name="sect_3"></a>
+<p class="MainHeading">
+3. Installation Instructions
+</p>
+<p class="SubHeading">
+<a name="sect_3_1"></a> 3.1 Microsoft Visual Studio 6
+</p>
+<p>
+These instructions describe installing MySQL for the compiler as well as this 
+package. If you already know how to (or have already have installed) MySQL into 
+your compiler, then installing this package is very easy; you just need to copy 
+the <b>CMySQL.h</b> and <b>CMySQL.cpp</b> files to your project folder and make 
+sure you are compiling the <b>CMySQL.cpp</b> file along with all your other 
+files. Also, include the <b>CMySQL.h</b> file everywhere where you intend to 
+interface with the class.
+</p>
+<ul>
+	<li>
+		Copy the MySQL folder (the actual folder, not just the files in it) from the <b>Microsoft 
+		Visual Studio 6 Files/include</b> folder in this package to where your compiler 
+		keeps its include files. This will probably be in <b>C:/Program Files/Microsoft 
+		Visual Studio/VC98/include</b> in a default installation. This means that you 
+		will have a folder called MySQL under <b>C:/Program Files/Microsoft Visual 
+		Studio/VC98/Include</b> with files in it.<br>
+		<br>
+	</li>
+	<li>
+		Copy the dll file <b>Microsoft Visual Studio 6 Files/dll/libmySQL.dll</b> to 
+		your project folder; this DLL will need to be distributed with your application. 
+		When you distribute this DLL, do not install it into the <b>C:/WINDOWS/system</b> 
+		or <b>C:/WINDOWS/system32</b> folder as there are multiple versions of the DLL (one 
+		for Microsoft Visual Studio 6 and a different one for Borland C++ Builder.<br>
+		<br>
+	</li>
+	<li>
+		Copy the lib file <b>Microsoft Visual Studio 6 Files/lib/libmysql.lib</b> to 
+		your project folder.<br>
+		<br>
+	</li>
+	<li>
+		Add the lib file to your project by adding it to the list; In VC6, go to Project, 
+		Settings. Click on the Link tab. In the General category, under object/library 
+		modules add <b>libMySQL.lib</b> to the end of the list.<br>
+		<br>
+	</li>
+	<li>
+		Copy the two source files (<b>CMySQL.h</b> and <b>CMySQL.cpp</b>) out of the <b>Microsoft 
+		Visual Studio 6 Files/Source Files</b> folder in the archive to your project 
+		folder, and add those files to your project. (To do this, select Project, Add To 
+		Project, Files)<br>
+		<br>
+	</li>
+	<li>
+		In your <b>StdAfx.h</b>, or in your source files where you want to use the class, 
+		add the line <b>#include "CMySQL.h"</b> to the top of your source file.<br>
+		&nbsp;<br>
+	</li>
+</ul>
+<a name="sect_3_2"></a>
+<p class="SubHeading">3.2 Borland C++ Builder 6</p>
+<p>
+These instructions describe installing MySQL for the compiler as well as this 
+package. If you already know how to (or have already have installed) MySQL into 
+your compiler, then installing this package is very easy; you just need to copy 
+the <b>CMySQL.h</b> and <b>CMySQL.cpp</b> files to your project folder and make 
+sure you are compiling the <b>CMySQL.cpp</b> file along with all your other 
+files. Also, include the <b>CMySQL.h</b> file everywhere where you intend to 
+interface with the class.
+</p>
+<p>
+Borland C++ Builder 6 is very picky about a lot of things, for all when using 
+the MySQL library in Borland C++ Builder 6 applications you absolutely need to 
+include <b>windows.h</b> before anything else or you get linker errors. I have 
+taken care of this for you, so you dont need to include the file yourself. All 
+you need to do is add a conditional define to your Borland C++ 6 Project. The 
+define is simply <b>BCB</b>. It can be added by selecting Project, Options, 
+choosing the Directories/Conditions tab and adding BCB to the list of 
+conditionals. (Click the button ... next to the edit box and add it in the 
+dialog that comes up - <b>_DEBUG</b> is usually there.)
+</p>
+<ul>
+	<li>
+		Copy the MySQL folder (the actual folder, not just the files in it) from the <b>Borland 
+		C++ Builder 6/include</b> folder in this package to where your compiler keeps 
+		its include files. This will probably be in <b>C:/Program Files/Borland/CBuilder6/include</b> 
+		in a default installation. This means that you will have a folder called MySQL 
+		under <b>C:/Program Files/Borland/CBuilder6/include</b> with files in it. <br>
+		<br>
+	</li>
+	<li>
+		Copy the lib file <b>Borland C++ Builder 6/lib/libMySQL.lib</b> to your project 
+		folder. <br>
+		<br>
+	</li>
+	<li>
+		Copy the dll file <b>Borland C++ Builder 6/dll/libmySQL.dll</b> to your project 
+		folder; this DLL will need to be distributed with your application. When you 
+		distribute this DLL, do not install it into the <b>C:/WINDOWS/system</b> or <b>C:/WINDOWS/system32</b> 
+		folder as there are multiple versions of the DLL (one for Microsoft Visual 
+		Studio 6 and a different one for Borland C++ Builder. <br>
+		<br>
+	</li>
+	<li>
+		Copy the lib file <b>Borland C++ Builder 6 Files/lib/libmysql.lib</b> to your 
+		project folder.<br>
+		<br>
+	</li>
+	<li>
+		Add the lib file to your project by adding it to the list; In Builder, go to 
+		Project, Add To Project. Click "files of type" and choose "library file". Select 
+		the lib file and click OK. <br>
+		<br>
+	</li>
+	<li>
+		Copy the two source files (<b>CMySQL.h</b> and <b>CMySQL.cpp</b>) out of the <b>Borland 
+		C++ Builder 6/Source Files</b> folder in the archive to your project folder, and 
+		add the <b>CMySQL.cpp</b> file to your project. (To do this, select Project, Add 
+		To Project, and choose the files) <br>
+		<br>
+	</li>
+	<li>
+		Where you want to use the class, add the line <b>#include "CMySQL.h"</b> to the 
+		top of your source file. <br>
+		<br>
+	</li>
+	<li>
+		Make sure that you add the BCB define as shown in Note #2. <br>
+		&nbsp;<br>
+	</li>
+</ul>
+<a name="sect_3_3"></a>
+<p class="SubHeading">3.3 gcc</p>
+<p>
+Installation under gcc hasn't been tested yet; however it should work by just 
+copying the source files to your project directory and adding the cpp to your 
+makefile. If this doesn't work, let me know, and I will place corrected 
+installation information here. Don't forget to link in the libmysql library.<br>
+&nbsp;<br>
+</p>
+
+<a name="sect_4"></a>
+<p class="MainHeading">4. How to use this package</p>
+<p>
+First off, make sure you have installed the package as has been detailed in 
+section 3. The rest of the document assumes that you have done this (correctly.)
+</p>
+<a name="sect_4_1"></a>
+<p class="SubHeading">4.1 Tutorial</p>
+<p>
+There are two examples; one is a simple example using the C standard library (the string class) and printf as a 
+single source file, while the other one is a Borland C++ Builder 6 application (the whole project but <b>without
+</b> the <b>dll</b> and <b>lib</b> files present)
+</p>
+<p>
+The simple example source file is in the <b>Tutorial</b> folder in this package. To make it compile and run you will need to follow the 
+instructions in section 3.1. The Borland C++ Builder 6 sample application is in the <b>Borland C++ Builder 6 Files/Sample</b> 
+folder. Dont forget to add the <b>dll</b> and <b>lib</b> files to the project folder before compiling and/or running the samples!
+</p>
+<p>
+The following example is the simple example (<b>the tutorial.cpp</b> file); it executes five different queries, showing you the
+result of each query. Some queries are invalid on purpose, some queries return no result set (on purpose) and some
+queries return a result set.
+</p>
+<p>
+This example assumes your MySQL server is on localhost and has a null root password. You can change these in the
+code if your server isn't configured in this way. It uses the database called mysql. After the code, there is an
+explanation of whats going on, or if you're smart you can use the comments as a point of reference.
+</p>
+<table bgcolor="#001030" cellpadding="0" cellspacing="0" border="0">
+<tr><td>
+<pre>
+     <font CLASS=comment>1:</font> <font CLASS=comment>/*
+     <font CLASS=comment>2:</font>         File: Tutorial.cpp
+     <font CLASS=comment>3:</font>      Purpose: Demonstration of CMySQL
+     <font CLASS=comment>4:</font>   Programmer: Tamburlaine Murray
+     <font CLASS=comment>5:</font>        Email: tmurray@antivoid.za.net
+     <font CLASS=comment>6:</font>         Date: 2004-Aug-24
+     <font CLASS=comment>7:</font> */</font>
+     <font CLASS=comment>8:</font> 
+     <font CLASS=comment>9:</font> <font CLASS=preproc>#include</font> &lt;conio.h&gt;  
+    <font CLASS=comment>10:</font> 
+    <font CLASS=comment>11:</font> <font CLASS=preproc>#include</font> <font CLASS=strings>"../CMySQL.h"</font>  
+    <font CLASS=comment>12:</font> 
+    <font CLASS=comment>13:</font> <font CLASS=keyword>int</font> main(<font CLASS=keyword>int</font> argc, <font CLASS=keyword>char</font>* argv[])
+    <font CLASS=comment>14:</font> {
+    <font CLASS=comment>15:</font>     CMySQL Instance;  <font CLASS=comment>//CMySQL instance</font>
+    <font CLASS=comment>16:</font> 
+    <font CLASS=comment>17:</font>     Instance.Connect(<font CLASS=strings>"localhost"</font>, <font CLASS=strings>"root"</font>, <font CLASS=strings>""</font>, <font CLASS=strings>"mysql"</font>);    <font CLASS=comment>//attempt to connect</font>
+    <font CLASS=comment>18:</font>     <font CLASS=keyword>if</font>(Instance.IsConnected())  <font CLASS=comment>//see if the connection was successful</font>
+    <font CLASS=comment>19:</font>     {
+    <font CLASS=comment>20:</font>         printf(<font CLASS=strings>"Connect successful.\r\n"</font>);
+    <font CLASS=comment>21:</font> 
+    <font CLASS=comment>22:</font>         std::string QueryList[<font CLASS=numbers>5</font>];
+    <font CLASS=comment>23:</font>         QueryList[<font CLASS=numbers>0</font>] = <font CLASS=strings>"show databases"</font>;  <font CLASS=comment>//returns the list of databases</font>
+    <font CLASS=comment>24:</font>         QueryList[<font CLASS=numbers>1</font>] = <font CLASS=strings>"Invalid query."</font>;  <font CLASS=comment>//an invalid query, to cause an error</font>
+    <font CLASS=comment>25:</font>         QueryList[<font CLASS=numbers>2</font>] = <font CLASS=strings>"select * from user"</font>;  <font CLASS=comment>//a normal query</font>
+    <font CLASS=comment>26:</font>         QueryList[<font CLASS=numbers>3</font>] = <font CLASS=strings>"show tables"</font>;  <font CLASS=comment>//show all the tables in the mysql database</font>
+    <font CLASS=comment>27:</font>         QueryList[<font CLASS=numbers>4</font>] = <font CLASS=strings>"use mysql"</font>;    <font CLASS=comment>//query with no result set.</font>
+    <font CLASS=comment>28:</font> 
+    <font CLASS=comment>29:</font>         <font CLASS=keyword>for</font>(<font CLASS=keyword>int</font> QueryNum = <font CLASS=numbers>0</font>; QueryNum &lt; <font CLASS=numbers>5</font>; ++QueryNum)  <font CLASS=comment>//go through all the queries</font>
+    <font CLASS=comment>30:</font>         {
+    <font CLASS=comment>31:</font>             std::string Query = QueryList[QueryNum];  <font CLASS=comment>//get query</font>
+    <font CLASS=comment>32:</font>             printf(<font CLASS=strings>"About to perform query \"%s\"... press a key when ready ...\r\n\n"</font>,Query.c_str());
+    <font CLASS=comment>33:</font>             getch();  <font CLASS=comment>//wait for keypress</font>
+    <font CLASS=comment>34:</font>             printf(<font CLASS=strings>"Performing query: \"%s\"\r\n"</font>,Query.c_str());
+    <font CLASS=comment>35:</font>             CMySQLResult* Result = Instance.Query(Query);  <font CLASS=comment>//perform query</font>
+    <font CLASS=comment>36:</font>             <font CLASS=keyword>if</font>(Result == NULL)   <font CLASS=comment>//test if the query had an error</font>
+    <font CLASS=comment>37:</font>             {
+    <font CLASS=comment>38:</font>                 <font CLASS=comment>//do some error handling, because we know query failed</font>
+    <font CLASS=comment>39:</font>                 printf(<font CLASS=strings>"Query failed.\r\n"</font>);
+    <font CLASS=comment>40:</font>             }
+    <font CLASS=comment>41:</font>             <font CLASS=keyword>else</font>  <font CLASS=comment>//success</font>
+    <font CLASS=comment>42:</font>             {
+    <font CLASS=comment>43:</font>                 <font CLASS=comment>//query succeeded.</font>
+    <font CLASS=comment>44:</font>                 printf(<font CLASS=strings>"Query succeeded\r\n"</font>);
+    <font CLASS=comment>45:</font>                 <font CLASS=keyword>if</font>(Result-&gt;GetResult_Exists())   <font CLASS=comment>//see if there was a result set</font>
+    <font CLASS=comment>46:</font>                 {
+    <font CLASS=comment>47:</font>                     printf(<font CLASS=strings>"There is a result set.\r\n"</font>);
+    <font CLASS=comment>48:</font>                     <font CLASS=comment>//we know there was is result set</font>
+    <font CLASS=comment>49:</font>                     <font CLASS=keyword>int</font> Fields = Result-&gt;GetResult_Fields();  <font CLASS=comment>//get amount of rows</font>
+    <font CLASS=comment>50:</font>                     <font CLASS=keyword>int</font> Rows = Result-&gt;GetResult_Rows();  <font CLASS=comment>//get amount of fields</font>
+    <font CLASS=comment>51:</font>                     printf(<font CLASS=strings>"%d rows and %d fields in result set.\r\n"</font>,Rows,Fields);
+    <font CLASS=comment>52:</font>                     <font CLASS=keyword>int</font> CurRow;
+    <font CLASS=comment>53:</font>                     <font CLASS=keyword>int</font> CurField;
+    <font CLASS=comment>54:</font>                     <font CLASS=keyword>for</font>(CurRow = <font CLASS=numbers>0</font>; CurRow &lt; Rows; ++CurRow)  <font CLASS=comment>//go through rows</font>
+    <font CLASS=comment>55:</font>                     {
+    <font CLASS=comment>56:</font>                         <font CLASS=keyword>for</font>(CurField = <font CLASS=numbers>0</font>; CurField &lt; Fields; ++CurField)  <font CLASS=comment>//go through fields</font>
+    <font CLASS=comment>57:</font>                         {
+    <font CLASS=comment>58:</font>                             <font CLASS=comment>//get field name</font>
+    <font CLASS=comment>59:</font>                             std::string FieldName = Result-&gt;GetResult_FieldName(CurField);
+    <font CLASS=comment>60:</font>                             <font CLASS=comment>//get data item text</font>
+    <font CLASS=comment>61:</font>                             std::string Text = Result-&gt;GetResult_Text(CurRow,CurField);
+    <font CLASS=comment>62:</font>                             printf(<font CLASS=strings>"Row #%d Field #%d (%s): %s\r\n"</font>,CurRow+<font CLASS=numbers>1</font>, CurField+<font CLASS=numbers>1</font>, 
+    <font CLASS=comment>63:</font>                                    FieldName.c_str(), Text.c_str()); 
+    <font CLASS=comment>64:</font>                         }
+    <font CLASS=comment>65:</font>                         printf(<font CLASS=strings>"\r\n"</font>);
+    <font CLASS=comment>66:</font>                     }
+    <font CLASS=comment>67:</font>                     Instance.FreeResult(Result); <font CLASS=comment>//free result</font>
+    <font CLASS=comment>68:</font>                 }
+    <font CLASS=comment>69:</font>                 <font CLASS=keyword>else</font>
+    <font CLASS=comment>70:</font>                 {
+    <font CLASS=comment>71:</font>                     <font CLASS=comment>//there was no result</font>
+    <font CLASS=comment>72:</font>                     printf(<font CLASS=strings>"No result set.\n\r"</font>);
+    <font CLASS=comment>73:</font>                 }
+    <font CLASS=comment>74:</font>             }
+    <font CLASS=comment>75:</font>             printf(<font CLASS=strings>"\r\n"</font>);
+    <font CLASS=comment>76:</font>         }
+    <font CLASS=comment>77:</font>     }
+    <font CLASS=comment>78:</font>     <font CLASS=keyword>else</font>
+    <font CLASS=comment>79:</font>     {
+    <font CLASS=comment>80:</font>         printf(<font CLASS=strings>"Failed to connect.\r\n"</font>);
+    <font CLASS=comment>81:</font>     }
+    <font CLASS=comment>82:</font>     printf(<font CLASS=strings>"\r\nPress any key to exit."</font>);
+    <font CLASS=comment>83:</font>     getch();  <font CLASS=comment>//wait for keypress</font>
+    <font CLASS=comment>84:</font>     <font CLASS=keyword>return</font> <font CLASS=numbers>0</font>;
+    <font CLASS=comment>85:</font> }
+    <font CLASS=comment>86:</font> 
+</pre></td></tr></table>
+<p>
+Here is a quick rundown of the more important lines of code:
+</p>
+<ul>
+	<li><b>Line 11: </b>Included the header file <b>"CMySQL.h"</b> to be able to use the <b>CMySQL</b> and <b>CMySQLResult</b> classes.</li>
+	<li><b>Line 15: </b>Created an instance of the <b>CMySQL</b> object.</li>
+	<li><b>Line 17: </b>Connected to the MySQL server, using the <b>CMySQL::Connect</b> function.</li>
+	<li><b>Line 18: </b>Checked if the connection was successful, using the <b>CMySQL::IsConnected</b> function. 
+		The return value of <b>CMySQL::Connect</b> in the call on line 9 could have been used instead because it returns <b>true</b> if it 
+		succeeds and <b>false</b> if it fails.</li>
+	<li><b>Line 35: </b>Performed the query, using the <b>CMySQL::Query</b> function. The function returns a pointer to a new instance
+		of <b>CMySQLResult</b>, which we need to free later using <b>delete</b> or <b>CMySQL::FreeResult</b>.</li>
+	<li><b>Line 36: </b>Checked to see if the query was successful or not, using the return value of <b>CMySQL::Query</b>.
+		<b>CMySQL::Query</b> returns <b>NULL</b> upon failure.</li>
+	<li><b>Line 45: </b>Checked to see if the result has a result set (data), using the <b>CMySQLResult::GetResult_Exists</b> function. 
+		The function returns <b>true</b> if there is a result, and <b>false</b> if there isnt a result.</li>
+	<li><b>Line 49: </b>Determined how many fields there are in the result set, using the 
+		<b>CMySQLResult::GetResult_Fields</b> function.</li>
+	<li><b>Line 50: </b>Determined how many rows there are in the result set, using the 
+		<b>CMySQLResult::GetResult_Rows</b> function.</li>
+	<li><b>Line 59: </b>We get the name of the field, using the <b>CMySQLResult::GetResult_FieldName</b> function.</li>
+	<li><b>Line 61: </b>We get the actual data item, referencing the item from a 2D array. (Row, Field). For this
+		we use <b>CMySQLResult::GetResult_Text</b> function.</li>
+	<li><b>Line 67: </b>We free the result, using the <b>CMySQL::FreeResult</b> function. Do not try to use <b>delete</b> to free the result;
+		The destructor for the <b>CMySQLResult</b> class a private function because doing a <b>delete</b> will interfere with the internal
+		list of results for the particular CMySQL instance. Using <b>CMySQL::FreeResult</b> is the safe way to free results.</li>
+</ul>
+&nbsp;<br>
+<a name="sect_4_2"></a>
+<p class="SubHeading">4.2 Reference</p>
+<p>
+The CMySQL package contains two classes; the <b>CMySQL</b> class, and the <b>CMySQLResult</b> class. The former class provides an interface
+to connect to the server and execute queries, while the latter class is result of a query.
+</p>
+<p>
+The class header uses a define called <b>InterfaceString</b> for all its strings. Depending on what compiler you're using, it is automatically
+replaced with either <b>std::string</b> or <b>AnsiString</b> (for Borland). 
+</p>
+&nbsp;<br>
+<a name="sect_4_2_1"></a>
+<p class="SubHeading">4.2.1 The CMySQL class</p>
+<a name="sect_4_2_1_1"></a>
+<p class="SubHeading">4.2.1.1 Connect()</p>
+<p><b>bool</b> CMySQL::Connect(<b>InterfaceString</b> Server, <b>InterfaceString</b> Username, <b>InterfaceString</b> Password, <b>InterfaceString</b> Database)</p>
+<p>
+This function connects to the server specified using the supplied username and password, and sets the current database to the specified
+database.
+</p>
+<p><b>Parameters:</b></p>
+<ul>
+	<li><b>Server: </b>The server you want to connect to. If you pass NULL or a blank string as a parameter, localhost is used instead.</li>
+	<li><b>Username: </b>The user you want to connect as.</li>
+	<li><b>Password: </b>The password for the username you are connecting as, in plain text (it is automatically encrypted before sending.)</li>
+	<li><b>Database: </b>The initial database to use.</li>
+</ul>
+<p><b>Return value:</b></p>
+<p>
+If the connection is successful, this function returns <b>true</b>, otherwise in the case of failure it returns <b>false</b>.
+</p>
+<p><b>Note:</b></p>
+<p>
+This function automatically frees all currently unfreed results when called.
+</p>
+&nbsp;<br>
+
+<a name="sect_4_2_1_2"></a>
+<p class="SubHeading">4.2.1.2 Disconnect()</p>
+<p><b>void</b> CMySQL::Disconnect()</p>
+<p>
+This function disconnects from the server.
+</p>
+<p><b>No parameters</b></p>
+<p><b>No return value</b></p>
+<p><b>Note:</b></p>
+<p>
+This function automatically frees all currently unfreed results when called.
+</p>
+&nbsp;<br>
+
+<a name="sect_4_2_1_3"></a>
+<p class="SubHeading">4.2.1.3 Query()</p>
+<p><b>CMySQLResult</b> *CMySQL::Query(<b>InterfaceString</b> Query)</p>
+<p>
+This function performs the query specified.
+</p>
+<p><b>Parameter:</b></p>
+<ul>
+	<li><b>Query: </b>The query to execute.</li>
+</ul>
+<p><b>Return value:</b></p>
+<p>
+If the query succeeds, the return value of this function is a pointer to a new instance of the <b>CMySQLResult</b> class.<br>
+If the query fails, the return value of this function is <b>NULL</b>.
+</p>
+<p><b>Note:</b></p>
+<p>
+The return value of this function, the new <b>CMySQLResult</b> instance, needs to be freed manually. To do this, you can either use
+the <b>delete</b> keyword, or you can call the static <b>CMySQL::FreeResult()</b> function, passing the pointer as the parameter.
+</p>
+&nbsp;<br>
+
+<a name="sect_4_2_1_4"></a>
+<p class="SubHeading">4.2.1.4 FreeResult()</p>
+<p><b>void</b> CMySQL::FreeResult(<b>CMySQLResult</b> *Result)</p>
+<p>
+This function frees the result specified by the Result parameters
+</p>
+<p><b>Parameter:</b></p>
+<ul>
+	<li><b>Result: </b>The result to free.</li>
+</ul>
+<p><b>No return value</b></p>
+<p><b>Note:</b></p>
+<p>
+You do not need to explicitly call <b>CMySQL::FreeResult</b> after using the result you want to free; the CMySQL class will 
+automatically free the result classes it returns when the CMySQL class disconnects from the server. (The CMySQL class 
+automatically disconnects from the server when it falls out of scope.)
+</p>
+&nbsp;<br>
+
+
+
+
+
+
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+
+</body>
+</html>
+

@@ -1,0 +1,148 @@
+[Closed Files]
+File_0=SourceModule,'D:\MySQL For C++\Source Files\BCB6 Example\untMain.cpp',0,1,1,11,7,0,0
+File_1=SourceModule,'D:\MySQL For C++\Tutorial\tutorial.cpp',0,1,1,1,1,0,0
+File_2=SourceModule,'D:\MySQL For C++\Tutorial Source\example_msvc6.cpp',0,1,1,1,1,0,0
+File_3=SourceModule,'D:\_Private\My Source\Omegacore\Source\CObjectManager.cpp',0,1,1,1,1,0,0
+File_4=SourceModule,'D:\_Private\My Source\Network computer scanner\Unit1.cpp',0,1,1,1,1,0,1
+File_5=SourceModule,'D:\_Private\My Source\LanTrojan\NewClient\untMain.cpp',0,1,16,94,34,0,0
+File_6=SourceModule,'D:\_Private\My Source\LanTrojan\NewClient\untWindows.cpp',0,1,21,1,26,0,0
+File_7=SourceModule,'D:\_Private\My Source\LanTrojan\NewClient\MainForm.cpp',0,1,1061,28,1064,0,1
+File_8=SourceModule,'c:\program files\borland\cbuilder6\include\stl\char_traits.h',0,1,151,1,169,0,0
+File_9=SourceModule,'D:\_Private\My Source\LanTrojan\NewClient\MainForm.dfm',0,1,1,1,1,0,0
+
+[Modules]
+Count=0
+EditWindowCount=0
+
+[D:\MySQL For C++\Source Files\BCB6 Example\BCB6Sample.bpr]
+FormState=0
+FormOnTop=0
+
+[D:\MySQL For C++\Source Files\BCB6 Example\ProjectGroup1.bpg]
+FormState=0
+FormOnTop=0
+
+[Watches]
+Count=0
+
+[Breakpoints]
+Count=0
+
+[AddressBreakpoints]
+Count=0
+
+[Main Window]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=0
+Width=1152
+Height=107
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1144
+ClientHeight=78
+
+[ProjectManager]
+Create=1
+Visible=0
+State=0
+Left=369
+Top=372
+Width=438
+Height=308
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=430
+ClientHeight=279
+TBDockHeight=308
+LRDockWidth=438
+Dockable=1
+
+[CPUWindow]
+Create=1
+Visible=0
+State=0
+Left=309
+Top=255
+Width=533
+Height=353
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=525
+ClientHeight=324
+DumpPane=79
+DisassemblyPane=187
+RegisterPane=231
+FlagPane=64
+
+[AlignmentPalette]
+Create=1
+Visible=0
+State=0
+Left=200
+Top=109
+Width=156
+Height=87
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=150
+ClientHeight=60
+
+[PropertyInspector]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=389
+Width=190
+Height=418
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=182
+ClientHeight=389
+TBDockHeight=418
+LRDockWidth=190
+Dockable=1
+SplitPos=85
+ArrangeBy=Name
+SelectedItem=
+ExpandedItems=
+HiddenCategories=
+
+[ObjectTree]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=107
+Width=190
+Height=280
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=182
+ClientHeight=251
+TBDockHeight=280
+LRDockWidth=190
+Dockable=1
+
+[CodeguardLog]
+Create=1
+Visible=0
+State=0
+Left=191
+Top=108
+Width=448
+Height=190
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=440
+ClientHeight=161
+TBDockHeight=190
+LRDockWidth=448
+Dockable=1
+
+[DockHosts]
+DockHostCount=0
+
